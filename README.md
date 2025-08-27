@@ -1,0 +1,2 @@
+# comfyinstances
+vastAI provisioning script
