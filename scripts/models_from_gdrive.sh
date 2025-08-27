@@ -37,23 +37,51 @@ WORKFLOWS=(
 CLIP_MODELS=(
     # Example Google Drive link (replace with your own)
     #"https://drive.google.com/uc?id=FILE_ID_2"
+    "https://drive.google.com/uc?id=1VgJPXCm3pCFf1mV3IaCwElP2Uw_M6TOk"
+    "https://drive.google.com/uc?id=1emVNxXrqduOQn_dgRUXR3zdqh0FOQ8xi"
+    "https://drive.google.com/uc?id=12u_vY2Djd9rZtQEoXkBJSkwNOPDDiIZ9"
     # Add more Google Drive links as needed
 )
 
 UNET_MODELS=(
     # Example Google Drive link (replace with your own)
-    "https://drive.google.com/file/d/169duNM6qbYToNwwBalU7ovujc2PZLa_0/view?usp=drive_link"
+    "https://drive.google.com/uc?id=169duNM6qbYToNwwBalU7ovujc2PZLa_0"
     #"https://drive.google.com/file/d/FILE_ID/view?usp=sharing"
 )
 
 VAE_MODELS=(
     # Example Google Drive link (replace with your own)
-    #"https://drive.google.com/uc?id=FILE_ID_4"
+    "https://drive.google.com/uc?id=1_nKd5uF47ciVQv75fZmOxacirFM8NN9F"
+    "https://drive.google.com/uc?id=1FuzzS9wslm-tB4-5xUxw7jAXJbvhyweX"
+    "https://drive.google.com/uc?id=1oPKRPgcPxVMbT3WgMc0s8LovLk0a1B8Y"
 )
+
+DIFFUSION_MODELS=(
+    # Example Google Drive link (replace with your own)
+    #"https://drive.google.com/uc?id=FILE_ID_4"
+    "https://drive.google.com/uc?id=1bC_CSovMda29guZU0KYreXCGcOxHs4qY"
+    "https://drive.google.com/uc?id=1Y4uYKGjgthpvF1QSO9hAGObvRfGMvtD8"
+    "https://drive.google.com/uc?id=1G9gvGy8O9zAqVVqAFZOn7KmNFswsfGxw"
+    "https://drive.google.com/uc?id=1KJBIRZliQuxe-XYZCX-bqvUXSurFb6zC"
+    "https://drive.google.com/uc?id=1dgywgcdKOUz4GtRAR-SVtHWWalhhc1m4"
+)
+
+IPADAPTER=(
+    "https://drive.google.com/uc?id=167upVMfQY-8sSnCc5MAQyI2YJwCsxl7q"
+)
+
 CHECKPOINTS=(
     # Example Google Drive link (replace with your own)
     "https://drive.google.com/uc?id=1dCdtN9m01w-89jRGOaGQ0EqgQTFfVTqh"
+    "https://drive.google.com/uc?id=15aXhKQrEHn0p4qxXFAAAVzrpXzTGiG0u"    
 )
+
+CONTROLNET=(
+    # Example Google Drive link (replace with your own)
+    "https://drive.google.com/uc?id=1Aqk2aguA2LtTOyPjP1FaUt42Xd-rVrfs"
+    #"https://drive.google.com/uc?id=15aXhKQrEHn0p4qxXFAAAVzrpXzTGiG0u"    
+)
+
 
 ### DO NOT EDIT BELOW HERE UNLESS YOU KNOW WHAT YOU ARE DOING ###
 
@@ -69,6 +97,9 @@ function provisioning_start() {
     provisioning_get_files "${COMFYUI_DIR}/models/vae"  "${VAE_MODELS[@]}"
     provisioning_get_files "${COMFYUI_DIR}/models/clip" "${CLIP_MODELS[@]}"
     provisioning_get_files "${COMFYUI_DIR}/models/checkpoints" "${CHECKPOINTS[@]}"
+    provisioning_get_files "${COMFYUI_DIR}/models/controlnet" "${CONTROLNET[@]}"
+    provisioning_get_files "${COMFYUI_DIR}/models/diffusion_models" "${DIFFUSION_MODELS[@]}"
+    provisioning_get_files "${COMFYUI_DIR}/models/ipadapter" "${IPADAPTER[@]}"
     provisioning_print_end
 }
 
@@ -87,7 +118,7 @@ function provisioning_get_pip_packages() {
 function provisioning_get_nodes() {
     for repo in "${NODES[@]}"; do
         dir="${repo##*/}"
-        path="${COMFYUI_DIR}custom_nodes/${dir}"
+        path="${COMFYUI_DIR}/custom_nodes/${dir}"
         requirements="${path}/requirements.txt"
         if [[ -d $path ]]; then
             if [[ ${AUTO_UPDATE,,} != "false" ]]; then
@@ -140,7 +171,7 @@ function provisioning_download() {
             if ! command -v gdown &> /dev/null; then
                 pip install gdown
             fi
-            gdown "$1" -O "$2"
+            gdown "$1" --fuzzy -O "$2"
         else
             # If the link is in the format /file/d/FILE_ID
             file_id=$(echo "$1" | grep -o '/d/[^/]*' | cut -d'/' -f3)
@@ -148,7 +179,7 @@ function provisioning_download() {
                 if ! command -v gdown &> /dev/null; then
                     pip install gdown
                 fi
-                gdown "$1" -O "$2"
+                gdown "$1" --fuzzy -O "$2"
             else
                 echo "Invalid Google Drive link format: $1"
             fi
