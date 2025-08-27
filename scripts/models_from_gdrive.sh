@@ -52,7 +52,7 @@ VAE_MODELS=(
 )
 CHECKPOINTS=(
     # Example Google Drive link (replace with your own)
-    "https://drive.google.com/file/d/1dCdtN9m01w-89jRGOaGQ0EqgQTFfVTqh/view?usp=drive_link"
+    "https://drive.google.com/uc?id=1dCdtN9m01w-89jRGOaGQ0EqgQTFfVTqh"
 )
 
 ### DO NOT EDIT BELOW HERE UNLESS YOU KNOW WHAT YOU ARE DOING ###
@@ -139,7 +139,7 @@ function provisioning_download() {
             if ! command -v gdown &> /dev/null; then
                 pip install gdown
             fi
-            gdown --id "$file_id" -O "$2"
+            gdown "$1" -O "$2"
         else
             # If the link is in the format /file/d/FILE_ID
             file_id=$(echo "$1" | grep -o '/d/[^/]*' | cut -d'/' -f3)
@@ -147,7 +147,7 @@ function provisioning_download() {
                 if ! command -v gdown &> /dev/null; then
                     pip install gdown
                 fi
-                gdown --id "$file_id" -O "$2"
+                gdown "$1" -O "$2"
             else
                 echo "Invalid Google Drive link format: $1"
             fi
