@@ -25,7 +25,7 @@ NODES=(
     "https://github.com/crystian/ComfyUI-Crystools"
     "https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite"
     "https://github.com/kijai/ComfyUI-FluxTrainer"
-    
+    "https://github.com/shiimizu/ComfyUI-TiledDiffusion"
 )
 
 WORKFLOWS=(
