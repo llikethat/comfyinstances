@@ -30,24 +30,29 @@ NODES=(
 
 WORKFLOWS=(
     # Example Google Drive link (replace with your own)
-    "https://drive.google.com/uc?id=FILE_ID_1"
+    #"https://drive.google.com/uc?id=FILE_ID_1"
     # Add more Google Drive links as needed
 )
 
 CLIP_MODELS=(
     # Example Google Drive link (replace with your own)
-    "https://drive.google.com/uc?id=FILE_ID_2"
+    #"https://drive.google.com/uc?id=FILE_ID_2"
     # Add more Google Drive links as needed
 )
 
 UNET_MODELS=(
     # Example Google Drive link (replace with your own)
     "https://drive.google.com/file/d/169duNM6qbYToNwwBalU7ovujc2PZLa_0/view?usp=drive_link"
+    #"https://drive.google.com/file/d/FILE_ID/view?usp=sharing"
 )
 
 VAE_MODELS=(
     # Example Google Drive link (replace with your own)
-    "https://drive.google.com/uc?id=FILE_ID_4"
+    #"https://drive.google.com/uc?id=FILE_ID_4"
+)
+CHECKPOINTS=(
+    # Example Google Drive link (replace with your own)
+    "https://drive.google.com/file/d/1dCdtN9m01w-89jRGOaGQ0EqgQTFfVTqh/view?usp=drive_link"
 )
 
 ### DO NOT EDIT BELOW HERE UNLESS YOU KNOW WHAT YOU ARE DOING ###
