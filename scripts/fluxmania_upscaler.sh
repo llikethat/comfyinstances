@@ -16,8 +16,17 @@ PIP_PACKAGES=(
 )
 
 NODES=(
-    #"https://github.com/ltdrdata/ComfyUI-Manager"
-    #"https://github.com/cubiq/ComfyUI_essentials"
+    "https://github.com/ltdrdata/ComfyUI-Manager"
+    "https://github.com/cubiq/ComfyUI_essentials"
+    "https://github.com/cubiq/ComfyUI_IPAdapter_plus"
+    "https://github.com/city96/ComfyUI-GGUF"
+    "https://github.com/rgthree/rgthree-comfy"
+    "https://github.com/yolain/ComfyUI-Easy-Use"
+    "https://github.com/kijai/ComfyUI-KJNodes"
+    "https://github.com/kijai/ComfyUI-Florence2"
+    "https://github.com/crystian/ComfyUI-Crystools"
+    "https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite"
+    "https://github.com/kijai/ComfyUI-FluxTrainer"
 )
 
 WORKFLOWS=(
@@ -27,12 +36,18 @@ WORKFLOWS=(
 CLIP_MODELS=(
     "https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/clip_l.safetensors"
     "https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/t5xxl_fp16.safetensors"
+    "https://huggingface.co/city96/t5-v1_1-xxl-encoder-gguf/resolve/main/t5-v1_1-xxl-encoder-Q8_0.gguf"
 )
 
 UNET_MODELS=(
+    "https://drive.google.com/file/d/169duNM6qbYToNwwBalU7ovujc2PZLa_0/view"
 )
 
 VAE_MODELS=(
+)
+
+UPSCALE_MODELS=( 
+    "https://huggingface.co/gemasai/4x_NMKD-Siax_200k/resolve/main/4x_NMKD-Siax_200k.pth"
 )
 
 ### DO NOT EDIT BELOW HERE UNLESS YOU KNOW WHAT YOU ARE DOING ###
@@ -64,7 +79,10 @@ function provisioning_start() {
         "${VAE_MODELS[@]}"
     provisioning_get_files \
         "${COMFYUI_DIR}/models/clip" \
-        "${CLIP_MODELS[@]}"
+        "${CLIP_MODELS[@]}"    
+    provisioning_get_files \
+        "${COMFYUI_DIR}/models/upscale_models" \
+        "${UPSCALE_MODELS[@]}"
     provisioning_print_end
 }
 
