@@ -43,6 +43,7 @@ CLIP_MODELS=(
 
 UNET_MODELS=(
     "https://huggingface.co/lllyasviel/flux1_dev/resolve/main/flux1-dev-fp8.safetensors"
+    "https://huggingface.co/Yogotatara/flux1-dev-Q8_0.gguf/resolve/main/flux1-dev-Q8_0.gguf"
 )
 
 VAE_MODELS=(
@@ -54,7 +55,8 @@ UPSCALE_MODELS=(
 )
 
 CONTROLNET_MODELS=(
-    "https://huggingface.co/jasperai/Flux.1-dev-Controlnet-Upscaler/resolve/main/diffusion_pytorch_model.safetensors"
+    "https://huggingface.co/jasperai/Flux.1-dev-Controlnet-Upscaler/resolve/main/diffusion_pytorch_model.safetensors" #upscaler
+    "https://huggingface.co/InstantX/FLUX.1-dev-Controlnet-Union/resolve/main/diffusion_pytorch_model.safetensors" #union
 )
 
 ### DO NOT EDIT BELOW HERE UNLESS YOU KNOW WHAT YOU ARE DOING ###
