@@ -1,0 +1,1071 @@
+{
+  "id": "5d6d4ac5-5468-4554-9945-cad2c0c78ea1",
+  "revision": 0,
+  "last_node_id": 77,
+  "last_link_id": 80,
+  "nodes": [
+    {
+      "id": 59,
+      "type": "Note",
+      "pos": [
+        1040,
+        1600
+      ],
+      "size": [
+        390,
+        140
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "text": ""
+      },
+      "widgets_values": [
+        "Optimal SDXL resolutions\n\nSquare\n1:1: 1024x1024, 768x768\n\nPortrait\n3:4: 896x1152\n2:3: 832x1216\n9:16: 768x1344\n9:21 640x1536\n\nLandscape\n4:3: 1152x896\n3:2: 1216x832\n16:9: 1344x768\n21:9: 1536x640"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 8,
+      "type": "VAEDecode",
+      "pos": [
+        2260,
+        1130
+      ],
+      "size": [
+        140,
+        50
+      ],
+      "flags": {},
+      "order": 18,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 12
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 22
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            49
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.53",
+        "Node name for S&R": "VAEDecode"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 10,
+      "type": "CLIPSetLastLayer",
+      "pos": [
+        1040,
+        1170
+      ],
+      "size": [
+        210,
+        60
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 13
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "slot_index": 0,
+          "links": [
+            15,
+            16
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.53",
+        "Node name for S&R": "CLIPSetLastLayer"
+      },
+      "widgets_values": [
+        -2
+      ]
+    },
+    {
+      "id": 29,
+      "type": "Reroute",
+      "pos": [
+        2160,
+        1880
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 23
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "VAE",
+          "links": [
+            22
+          ]
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 30,
+      "type": "Reroute",
+      "pos": [
+        1040,
+        1880
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 24
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "VAE",
+          "links": [
+            23
+          ]
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 64,
+      "type": "Note",
+      "pos": [
+        450,
+        1330
+      ],
+      "size": [
+        520,
+        280
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "text": ""
+      },
+      "widgets_values": [
+        "Dreamshaper XL (Lightning DPM++ SDE)\n\nModel page:\nhttps://civitai.com/models/112902?modelVersionId=354657\n\nDirect download link:\nhttps://civitai.com/api/download/models/354657?type=Model&format=SafeTensor&size=full&fp=fp16\n\nSave to:\nComfyUI/models/checkpoints/SDXL/lightning/dreamshaperXL_lightningDPMSDE.safetensors"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 61,
+      "type": "PreviewImage",
+      "pos": [
+        3000,
+        1050
+      ],
+      "size": [
+        540,
+        610
+      ],
+      "flags": {},
+      "order": 16,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 60
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.53",
+        "Node name for S&R": "PreviewImage"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 41,
+      "type": "Reroute",
+      "pos": [
+        2900,
+        770
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 43
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            60
+          ]
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 48,
+      "type": "Note",
+      "pos": [
+        1050,
+        850
+      ],
+      "size": [
+        300,
+        88
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "text": ""
+      },
+      "widgets_values": [
+        "Pearl_Earring_832x832.jpg"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 40,
+      "type": "Reroute",
+      "pos": [
+        1470,
+        770
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 79
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            43
+          ]
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 49,
+      "type": "EmptyLatentImage",
+      "pos": [
+        1470,
+        1610
+      ],
+      "size": [
+        315,
+        106
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "slot_index": 0,
+          "links": [
+            66
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.53",
+        "Node name for S&R": "EmptyLatentImage"
+      },
+      "widgets_values": [
+        832,
+        1216,
+        1
+      ]
+    },
+    {
+      "id": 38,
+      "type": "PreviewImage",
+      "pos": [
+        2430,
+        970
+      ],
+      "size": [
+        540,
+        820
+      ],
+      "flags": {},
+      "order": 19,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 49
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.53",
+        "Node name for S&R": "PreviewImage"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 3,
+      "type": "KSampler",
+      "pos": [
+        1910,
+        1130
+      ],
+      "size": [
+        320,
+        474
+      ],
+      "flags": {},
+      "order": 17,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 65
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 10
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 11
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 66
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "slot_index": 0,
+          "links": [
+            12
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.53",
+        "Node name for S&R": "KSampler"
+      },
+      "widgets_values": [
+        123456789,
+        "fixed",
+        7,
+        1.5,
+        "dpmpp_sde",
+        "karras",
+        1
+      ]
+    },
+    {
+      "id": 35,
+      "type": "IPAdapter",
+      "pos": [
+        1470,
+        360
+      ],
+      "size": [
+        315,
+        190
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 55
+        },
+        {
+          "name": "ipadapter",
+          "type": "IPADAPTER",
+          "link": 56
+        },
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 80
+        },
+        {
+          "name": "attn_mask",
+          "shape": 7,
+          "type": "MASK",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "slot_index": 0,
+          "links": [
+            65
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui_ipadapter_plus",
+        "ver": "a0f451a5113cf9becb0847b92884cb10cbdec0ef",
+        "Node name for S&R": "IPAdapter"
+      },
+      "widgets_values": [
+        1,
+        0,
+        1,
+        "standard"
+      ]
+    },
+    {
+      "id": 77,
+      "type": "LoadImage",
+      "pos": [
+        1060.0238037109375,
+        484.34149169921875
+      ],
+      "size": [
+        274.080078125,
+        314.0000305175781
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            79,
+            80
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.53",
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "pasted/image.png",
+        "image"
+      ]
+    },
+    {
+      "id": 4,
+      "type": "CheckpointLoaderSimple",
+      "pos": [
+        480,
+        1150
+      ],
+      "size": [
+        480,
+        110
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "slot_index": 0,
+          "links": [
+            64
+          ]
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "slot_index": 1,
+          "links": [
+            13
+          ]
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "slot_index": 2,
+          "links": [
+            24
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.53",
+        "Node name for S&R": "CheckpointLoaderSimple"
+      },
+      "widgets_values": [
+        "dreamshaperXL_lightningDPMSDE.safetensors"
+      ]
+    },
+    {
+      "id": 7,
+      "type": "CLIPTextEncode",
+      "pos": [
+        1300,
+        1290
+      ],
+      "size": [
+        425.27801513671875,
+        180.6060791015625
+      ],
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 16
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "slot_index": 0,
+          "links": [
+            11
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.53",
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "beard, mustache, facial hair, old, aged, wrinkles, grey hair, ugly, deformed, blurry, painting, cartoon, anime, illustration, disfigured, bad anatomy, extra limbs"
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 51,
+      "type": "Note",
+      "pos": [
+        1920,
+        290
+      ],
+      "size": [
+        1440,
+        400
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "text": ""
+      },
+      "widgets_values": [
+        "Custom nodes:\nComfyUI_IP-Adapter_plus\nhttps://github.com/cubiq/ComfyUI_IPAdapter_plus\n\n\nIP-Adapter models - Direct Download links:\nSD15\nhttps://huggingface.co/h94/IP-Adapter/resolve/main/models/ip-adapter_sd15.safetensors\nhttps://huggingface.co/h94/IP-Adapter/resolve/main/models/ip-adapter_sd15_vit-G.safetensors\nhttps://huggingface.co/h94/IP-Adapter/resolve/main/models/ip-adapter_sd15_light.safetensors\nhttps://huggingface.co/h94/IP-Adapter/resolve/main/models/ip-adapter-full-face_sd15.safetensors\nhttps://huggingface.co/h94/IP-Adapter/resolve/main/models/ip-adapter-plus_sd15.safetensors\nhttps://huggingface.co/h94/IP-Adapter/resolve/main/models/ip-adapter-plus-face_sd15.safetensors\n\nSDXL\nhttps://huggingface.co/h94/IP-Adapter/resolve/main/sdxl_models/ip-adapter_sdxl.safetensors\nhttps://huggingface.co/h94/IP-Adapter/resolve/main/sdxl_models/ip-adapter-plus_sdxl_vit-h.safetensors\nhttps://huggingface.co/h94/IP-Adapter/resolve/main/sdxl_models/ip-adapter-plus-face_sdxl_vit-h.safetensors\nhttps://huggingface.co/h94/IP-Adapter/resolve/main/sdxl_models/ip-adapter_sdxl_vit-h.safetensors\n\nSave to:\nComfyUI/models/ipadapter/\n\n\nClipVision models - Direct Download links\nhttps://huggingface.co/h94/IP-Adapter/resolve/main/models/image_encoder/model.safetensors -> CLIP-ViT-H-14-laion2B-s32B-b79K.safetensors\nhttps://huggingface.co/h94/IP-Adapter/resolve/main/sdxl_models/image_encoder/model.safetensors -> CLIP-ViT-bigG-14-laion2B-39B-b160k.safetensors\n\nSave to:\nComfyUI/models/clip_vision\n"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 33,
+      "type": "IPAdapterUnifiedLoader",
+      "pos": [
+        1040,
+        360
+      ],
+      "size": [
+        315,
+        78
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 64
+        },
+        {
+          "name": "ipadapter",
+          "shape": 7,
+          "type": "IPADAPTER",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "slot_index": 0,
+          "links": [
+            55
+          ]
+        },
+        {
+          "name": "ipadapter",
+          "type": "IPADAPTER",
+          "slot_index": 1,
+          "links": [
+            56
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui_ipadapter_plus",
+        "ver": "a0f451a5113cf9becb0847b92884cb10cbdec0ef",
+        "Node name for S&R": "IPAdapterUnifiedLoader"
+      },
+      "widgets_values": [
+        "PLUS (high strength)"
+      ]
+    },
+    {
+      "id": 6,
+      "type": "CLIPTextEncode",
+      "pos": [
+        1300,
+        1070
+      ],
+      "size": [
+        422.84503173828125,
+        164.31304931640625
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 15
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "slot_index": 0,
+          "links": [
+            10
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.53",
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "photograph of a young, dynamic warrior, stubbles, determined expression, intense gaze, weathered but smooth skin with subtle battle scars, detailed skin pores, muscular build, wearing practical leather armor, dramatic cinematic lighting, sharp focus, action pose, masterpiece, 8k, UHD, photorealistic"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    }
+  ],
+  "links": [
+    [
+      10,
+      6,
+      0,
+      3,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      11,
+      7,
+      0,
+      3,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      12,
+      3,
+      0,
+      8,
+      0,
+      "LATENT"
+    ],
+    [
+      13,
+      4,
+      1,
+      10,
+      0,
+      "CLIP"
+    ],
+    [
+      15,
+      10,
+      0,
+      6,
+      0,
+      "CLIP"
+    ],
+    [
+      16,
+      10,
+      0,
+      7,
+      0,
+      "CLIP"
+    ],
+    [
+      22,
+      29,
+      0,
+      8,
+      1,
+      "VAE"
+    ],
+    [
+      23,
+      30,
+      0,
+      29,
+      0,
+      "*"
+    ],
+    [
+      24,
+      4,
+      2,
+      30,
+      0,
+      "*"
+    ],
+    [
+      43,
+      40,
+      0,
+      41,
+      0,
+      "*"
+    ],
+    [
+      49,
+      8,
+      0,
+      38,
+      0,
+      "IMAGE"
+    ],
+    [
+      55,
+      33,
+      0,
+      35,
+      0,
+      "MODEL"
+    ],
+    [
+      56,
+      33,
+      1,
+      35,
+      1,
+      "IPADAPTER"
+    ],
+    [
+      60,
+      41,
+      0,
+      61,
+      0,
+      "IMAGE"
+    ],
+    [
+      64,
+      4,
+      0,
+      33,
+      0,
+      "MODEL"
+    ],
+    [
+      65,
+      35,
+      0,
+      3,
+      0,
+      "MODEL"
+    ],
+    [
+      66,
+      49,
+      0,
+      3,
+      3,
+      "LATENT"
+    ],
+    [
+      79,
+      77,
+      0,
+      40,
+      0,
+      "*"
+    ],
+    [
+      80,
+      77,
+      0,
+      35,
+      2,
+      "IMAGE"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 1,
+      "title": "IP-ADAPTER PORTRAIT (SDXL)",
+      "bounding": [
+        0,
+        -90,
+        3840,
+        80
+      ],
+      "color": "#808080",
+      "font_size": 48,
+      "flags": {}
+    },
+    {
+      "id": 2,
+      "title": "Workflow © 2024 - Xavier Bourque - pixelfudger.com",
+      "bounding": [
+        3240,
+        -180,
+        600,
+        80
+      ],
+      "color": "#808080",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 3,
+      "title": "IPAdapter",
+      "bounding": [
+        1020,
+        270,
+        781,
+        677
+      ],
+      "color": "#b39ddb",
+      "font_size": 36,
+      "flags": {}
+    },
+    {
+      "id": 4,
+      "title": "CHECKPOINT",
+      "bounding": [
+        470,
+        1060,
+        500,
+        210
+      ],
+      "color": "#8AA",
+      "font_size": 36,
+      "flags": {}
+    },
+    {
+      "id": 5,
+      "title": "EMPTY LATENT IMAGE",
+      "bounding": [
+        1030,
+        1510,
+        770,
+        260
+      ],
+      "color": "#a1309b",
+      "font_size": 36,
+      "flags": {}
+    },
+    {
+      "id": 6,
+      "title": "TEXT PROMPT",
+      "bounding": [
+        1030,
+        980,
+        770,
+        500
+      ],
+      "color": "#b58b2a",
+      "font_size": 36,
+      "flags": {}
+    },
+    {
+      "id": 7,
+      "title": "SAMPLER",
+      "bounding": [
+        1900,
+        1040,
+        510,
+        574
+      ],
+      "color": "#b06634",
+      "font_size": 36,
+      "flags": {}
+    },
+    {
+      "id": 8,
+      "title": "OUTPUT IMAGE",
+      "bounding": [
+        2420,
+        880,
+        560,
+        920
+      ],
+      "color": "#3f789e",
+      "font_size": 36,
+      "flags": {}
+    },
+    {
+      "id": 9,
+      "title": "IMAGE PROMPT",
+      "bounding": [
+        2990,
+        880,
+        560,
+        920
+      ],
+      "color": "#3f789e",
+      "font_size": 36,
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 1.0630591966579668,
+      "offset": [
+        -1842.0900033979033,
+        -734.3828835229583
+      ]
+    },
+    "workspace_info": {
+      "id": "d97880ae-b230-4092-97d8-6138163445ab",
+      "saveLock": false,
+      "cloudID": null,
+      "coverMediaPath": null
+    },
+    "frontendVersion": "1.23.4",
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
+  },
+  "version": 0.4
+}
