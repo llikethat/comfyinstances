@@ -70,6 +70,10 @@ CLIPVISION=(
     "https://huggingface.co/h94/IP-Adapter/resolve/main/models/image_encoder/model.safetensors" #CLIP-ViT-H-14-laion2B-s32B-b79K.safetensors
     "https://huggingface.co/h94/IP-Adapter/resolve/main/sdxl_models/image_encoder/model.safetensors" #CLIP-ViT-bigG-14-laion2B-39B-b160k.safetensors
 )
+
+DIFFUSION_MODELS=(
+"https://huggingface.co/Comfy-Org/flux1-kontext-dev_ComfyUI/resolve/main/split_files/diffusion_models/flux1-dev-kontext_fp8_scaled.safetensors"
+)
 ### DO NOT EDIT BELOW HERE UNLESS YOU KNOW WHAT YOU ARE DOING ###
 
 function provisioning_start() {
@@ -112,6 +116,9 @@ function provisioning_start() {
     provisioning_get_files \
         "${COMFYUI_DIR}/models/clip_vision" \
         "${CLIPVISION[@]}"
+    provisioning_get_files \
+        "${COMFYUI_DIR}/models/diffusion_models" \
+        "${DIFFUSION_MODELS[@]}"
     provisioning_print_end
 }
 
