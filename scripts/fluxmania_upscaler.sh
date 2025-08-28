@@ -28,6 +28,9 @@ NODES=(
     "https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite"
     "https://github.com/kijai/ComfyUI-FluxTrainer"
     "https://github.com/shiimizu/ComfyUI-TiledDiffusion"
+    "https://github.com/lquesada/ComfyUI-Inpaint-CropAndStitch"
+    "https://github.com/Acly/comfyui-inpaint-nodes"
+    "https://github.com/kijai/ComfyUI-WanVideoWrapper"
 )
 
 WORKFLOWS=(
