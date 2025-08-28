@@ -1,0 +1,818 @@
+{
+  "id": "ef8e5417-30e6-4ae5-b26e-675a83980b66",
+  "revision": 0,
+  "last_node_id": 55,
+  "last_link_id": 92,
+  "nodes": [
+    {
+      "id": 48,
+      "type": "CLIPSetLastLayer",
+      "pos": [
+        1360,
+        500
+      ],
+      "size": [
+        220,
+        60
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 65
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "slot_index": 0,
+          "links": [
+            67,
+            68
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.53",
+        "Node name for S&R": "CLIPSetLastLayer"
+      },
+      "widgets_values": [
+        -2
+      ]
+    },
+    {
+      "id": 5,
+      "type": "EmptyLatentImage",
+      "pos": [
+        1760,
+        920
+      ],
+      "size": [
+        220,
+        120
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "slot_index": 0,
+          "links": [
+            78
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.53",
+        "Node name for S&R": "EmptyLatentImage"
+      },
+      "widgets_values": [
+        832,
+        1216,
+        1
+      ]
+    },
+    {
+      "id": 43,
+      "type": "VAEDecode",
+      "pos": [
+        2500,
+        480
+      ],
+      "size": [
+        140,
+        60
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 86
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 91
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            92
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.53",
+        "Node name for S&R": "VAEDecode"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 46,
+      "type": "Reroute",
+      "pos": [
+        1400,
+        1260
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 76
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "VAE",
+          "links": [
+            75
+          ]
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 47,
+      "type": "Reroute",
+      "pos": [
+        2020,
+        160
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 70
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "MODEL",
+          "slot_index": 0,
+          "links": [
+            87
+          ]
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 54,
+      "type": "Reroute",
+      "pos": [
+        2020,
+        920
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 78
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "LATENT",
+          "slot_index": 0,
+          "links": [
+            90
+          ]
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 52,
+      "type": "Note",
+      "pos": [
+        1460,
+        920
+      ],
+      "size": [
+        271.2488098144531,
+        221.5894317626953
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "text": ""
+      },
+      "widgets_values": [
+        "Optimal SDXL resolutions\n\nSquare\n1:1: 1024x1024, 768x768\n\nPortrait\n3:4: 896x1152\n2:3: 832x1216\n9:16: 768x1344\n9:21 640x1536\n\nLandscape\n4:3: 1152x896\n3:2: 1216x832\n16:9: 1344x768\n21:9: 1536x640"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 42,
+      "type": "Reroute",
+      "pos": [
+        2390,
+        1260
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 75
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "VAE",
+          "links": [
+            91
+          ]
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 41,
+      "type": "Reroute",
+      "pos": [
+        1400,
+        160
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 69
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "MODEL",
+          "slot_index": 0,
+          "links": [
+            70
+          ]
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 53,
+      "type": "Note",
+      "pos": [
+        690,
+        670
+      ],
+      "size": [
+        550,
+        240
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "text": ""
+      },
+      "widgets_values": [
+        "Dreamshaper XL (Lightning DPM++ SDE)\n\nModel page:\nhttps://civitai.com/models/112902?modelVersionId=354657\n\nDirect download link:\nhttps://civitai.com/api/download/models/354657?type=Model&format=SafeTensor&size=full&fp=fp16\n\nSave to:\nComfyUI/models/checkpoints/SDXL/lightning/dreamshaperXL_lightningDPMSDE.safetensors"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 11,
+      "type": "PreviewImage",
+      "pos": [
+        2710,
+        480
+      ],
+      "size": [
+        550,
+        840
+      ],
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 92
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.53",
+        "Node name for S&R": "PreviewImage"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 51,
+      "type": "CheckpointLoaderSimple",
+      "pos": [
+        720,
+        480
+      ],
+      "size": [
+        530,
+        110
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "slot_index": 0,
+          "links": [
+            69
+          ]
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "slot_index": 1,
+          "links": [
+            65
+          ]
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "slot_index": 2,
+          "links": [
+            76
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.53",
+        "Node name for S&R": "CheckpointLoaderSimple"
+      },
+      "widgets_values": [
+        "dreamshaperXL_lightningDPMSDE.safetensors"
+      ]
+    },
+    {
+      "id": 49,
+      "type": "CLIPTextEncode",
+      "pos": [
+        1620,
+        400
+      ],
+      "size": [
+        422.84503173828125,
+        164.31304931640625
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 67
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "slot_index": 0,
+          "links": [
+            88
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.53",
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "photograph of a young, dynamic warrior, stubbles, determined expression, intense gaze, weathered but smooth skin with subtle battle scars, detailed skin pores, muscular build, wearing practical leather armor, dramatic cinematic lighting, sharp focus, action pose, masterpiece, 8k, UHD, photorealistic"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 44,
+      "type": "CLIPTextEncode",
+      "pos": [
+        1620,
+        620
+      ],
+      "size": [
+        425.27801513671875,
+        180.6060791015625
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 68
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "slot_index": 0,
+          "links": [
+            89
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.53",
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "beard, mustache, facial hair, old, aged, wrinkles, grey hair, ugly, deformed, blurry, painting, cartoon, anime, illustration, disfigured, bad anatomy, extra limbs"
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 50,
+      "type": "KSampler",
+      "pos": [
+        2140,
+        480
+      ],
+      "size": [
+        320,
+        474
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 87
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 88
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 89
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 90
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "slot_index": 0,
+          "links": [
+            86
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.53",
+        "Node name for S&R": "KSampler"
+      },
+      "widgets_values": [
+        123456891,
+        "fixed",
+        12,
+        1,
+        "dpmpp_sde",
+        "karras",
+        1
+      ]
+    }
+  ],
+  "links": [
+    [
+      65,
+      51,
+      1,
+      48,
+      0,
+      "CLIP"
+    ],
+    [
+      67,
+      48,
+      0,
+      49,
+      0,
+      "CLIP"
+    ],
+    [
+      68,
+      48,
+      0,
+      44,
+      0,
+      "CLIP"
+    ],
+    [
+      69,
+      51,
+      0,
+      41,
+      0,
+      "*"
+    ],
+    [
+      70,
+      41,
+      0,
+      47,
+      0,
+      "*"
+    ],
+    [
+      75,
+      46,
+      0,
+      42,
+      0,
+      "*"
+    ],
+    [
+      76,
+      51,
+      2,
+      46,
+      0,
+      "*"
+    ],
+    [
+      78,
+      5,
+      0,
+      54,
+      0,
+      "*"
+    ],
+    [
+      86,
+      50,
+      0,
+      43,
+      0,
+      "LATENT"
+    ],
+    [
+      87,
+      47,
+      0,
+      50,
+      0,
+      "MODEL"
+    ],
+    [
+      88,
+      49,
+      0,
+      50,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      89,
+      44,
+      0,
+      50,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      90,
+      54,
+      0,
+      50,
+      3,
+      "LATENT"
+    ],
+    [
+      91,
+      42,
+      0,
+      43,
+      1,
+      "VAE"
+    ],
+    [
+      92,
+      43,
+      0,
+      11,
+      0,
+      "IMAGE"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 1,
+      "title": "TEXT TO IMAGE (SD XL)",
+      "bounding": [
+        0,
+        -90,
+        3840,
+        80
+      ],
+      "color": "#808080",
+      "font_size": 48,
+      "flags": {}
+    },
+    {
+      "id": 2,
+      "title": "Workflow © 2024 - Xavier Bourque - pixelfudger.com",
+      "bounding": [
+        3240,
+        -180,
+        600,
+        80
+      ],
+      "color": "#808080",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 3,
+      "title": "CHECKPOINT",
+      "bounding": [
+        670,
+        390,
+        610,
+        220
+      ],
+      "color": "#8AA",
+      "font_size": 36,
+      "flags": {}
+    },
+    {
+      "id": 4,
+      "title": "EMPTY LATENT",
+      "bounding": [
+        1450,
+        830,
+        540,
+        322
+      ],
+      "color": "#a1309b",
+      "font_size": 36,
+      "flags": {}
+    },
+    {
+      "id": 5,
+      "title": "TEXT PROMPT",
+      "bounding": [
+        1350,
+        310,
+        705,
+        501
+      ],
+      "color": "#b58b2a",
+      "font_size": 36,
+      "flags": {}
+    },
+    {
+      "id": 6,
+      "title": "SAMPLER",
+      "bounding": [
+        2130,
+        390,
+        520,
+        574
+      ],
+      "color": "#b06634",
+      "font_size": 36,
+      "flags": {}
+    },
+    {
+      "id": 7,
+      "title": "OUTPUT",
+      "bounding": [
+        2700,
+        390,
+        570,
+        940
+      ],
+      "color": "#3f789e",
+      "font_size": 36,
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 1.081315136594938,
+      "offset": [
+        -1409.276507558799,
+        -315.21960532174046
+      ]
+    },
+    "workspace_info": {
+      "id": "30ePJqmAY_7is2-0YHCTb",
+      "saveLock": false,
+      "cloudID": null,
+      "coverMediaPath": null
+    },
+    "groupNodes": {},
+    "frontendVersion": "1.23.4",
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
+  },
+  "version": 0.4
+}
