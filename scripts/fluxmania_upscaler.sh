@@ -35,6 +35,13 @@ NODES=(
 
 WORKFLOWS=(
     "https://gist.githubusercontent.com/robballantyne/f8cb692bdcd89c96c0bd1ec0c969d905/raw/2d969f732d7873f0e1ee23b2625b50f201c722a5/flux_dev_example.json"
+    "https://huggingface.co/XLabs-AI/flux-controlnet-collections/resolve/main/workflows/canny_workflow.json"
+    "https://huggingface.co/XLabs-AI/flux-controlnet-collections/resolve/main/workflows/depth_workflow.json"
+    "https://huggingface.co/XLabs-AI/flux-controlnet-collections/resolve/main/workflows/hed_workflow.json"
+)
+
+INPUTS=(
+    "https://huggingface.co/XLabs-AI/flux-controlnet-collections/tree/main/assets"
 )
 
 CLIP_MODELS=(
@@ -60,6 +67,9 @@ UPSCALE_MODELS=(
 CONTROLNET_MODELS=(
     "https://huggingface.co/jasperai/Flux.1-dev-Controlnet-Upscaler/resolve/main/diffusion_pytorch_model.safetensors" #upscaler
     "https://huggingface.co/InstantX/FLUX.1-dev-Controlnet-Union/resolve/main/diffusion_pytorch_model.safetensors" #union
+    "https://huggingface.co/XLabs-AI/flux-controlnet-collections/resolve/main/flux-canny-controlnet-v3.safetensors"
+    "https://huggingface.co/XLabs-AI/flux-controlnet-collections/resolve/main/flux-depth-controlnet-v3.safetensors"
+    "https://huggingface.co/XLabs-AI/flux-controlnet-collections/resolve/main/flux-hed-controlnet-v3.safetensors"
 )
 
 IPADAPTER=(
@@ -69,14 +79,36 @@ IPADAPTER=(
     "https://huggingface.co/h94/IP-Adapter/resolve/main/sdxl_models/ip-adapter_sdxl_vit-h.safetensors"
 )
 
+CHECKPOINTS=(
+    "https://huggingface.co/Comfy-Org/flux1-dev/resolve/main/flux1-dev-fp8.safetensors"
+    "https://huggingface.co/Comfy-Org/flux1-dev/resolve/main/flux1-dev.safetensors"
+    "https://huggingface.co/Comfy-Org/flux1-schnell/resolve/main/flux1-schnell.safetensors"
+    "https://huggingface.co/Comfy-Org/flux1-schnell/resolve/main/flux1-schnell-fp8.safetensors"
+)
+
 CLIPVISION=(
     "https://huggingface.co/h94/IP-Adapter/resolve/main/models/image_encoder/model.safetensors" #CLIP-ViT-H-14-laion2B-s32B-b79K.safetensors
     "https://huggingface.co/h94/IP-Adapter/resolve/main/sdxl_models/image_encoder/model.safetensors" #CLIP-ViT-bigG-14-laion2B-39B-b160k.safetensors
+    "https://huggingface.co/Comfy-Org/sigclip_vision_384/resolve/main/sigclip_vision_patch14_384.safetensors"
 )
 
 DIFFUSION_MODELS=(
-"https://huggingface.co/Comfy-Org/flux1-kontext-dev_ComfyUI/resolve/main/split_files/diffusion_models/flux1-dev-kontext_fp8_scaled.safetensors"
+    "https://huggingface.co/Comfy-Org/flux1-kontext-dev_ComfyUI/resolve/main/split_files/diffusion_models/flux1-dev-kontext_fp8_scaled.safetensors"
+    "https://huggingface.co/black-forest-labs/FLUX.1-Kontext-dev/resolve/main/flux1-kontext-dev.safetensors"
+    "https://huggingface.co/black-forest-labs/FLUX.1-Fill-dev/resolve/main/flux1-fill-dev.safetensors"
+    "https://huggingface.co/black-forest-labs/FLUX.1-Canny-dev/resolve/main/flux1-canny-dev.safetensors"
+    "https://huggingface.co/black-forest-labs/FLUX.1-Depth-dev/resolve/main/flux1-depth-dev.safetensors"
 )
+
+STYLE_MODELS=(
+    "https://huggingface.co/black-forest-labs/FLUX.1-Redux-dev/resolve/main/flux1-redux-dev.safetensors"
+)
+
+LORAS=(
+    "https://huggingface.co/black-forest-labs/FLUX.1-Canny-dev-lora/resolve/main/flux1-canny-dev-lora.safetensors"
+    "https://huggingface.co/black-forest-labs/FLUX.1-Depth-dev-lora/resolve/main/flux1-depth-dev-lora.safetensors"
+)
+
 ### DO NOT EDIT BELOW HERE UNLESS YOU KNOW WHAT YOU ARE DOING ###
 
 function provisioning_start() {
@@ -98,6 +130,9 @@ function provisioning_start() {
         VAE_MODELS+=("https://huggingface.co/black-forest-labs/FLUX.1-schnell/resolve/main/ae.safetensors")
         sed -i 's/flux1-dev\.safetensors/flux1-schnell.safetensors/g' "${workflows_dir}/flux_dev_example.json"
     fi
+    provisioning_get_files \
+        "${COMFYUI_DIR}/input" \
+        "${INPUTS[@]}"
     provisioning_get_files \
         "${COMFYUI_DIR}/models/unet" \
         "${UNET_MODELS[@]}"
@@ -122,6 +157,15 @@ function provisioning_start() {
     provisioning_get_files \
         "${COMFYUI_DIR}/models/diffusion_models" \
         "${DIFFUSION_MODELS[@]}"
+    provisioning_get_files \
+        "${COMFYUI_DIR}/models/checkpoints" \
+        "${CHECKPOINTS[@]}"
+    provisioning_get_files \
+        "${COMFYUI_DIR}/models/style_models" \
+        "${STYLE_MODELS[@]}"
+    provisioning_get_files \
+        "${COMFYUI_DIR}/models/loras" \
+        "${LORAS[@]}"
     provisioning_print_end
 }
 
