@@ -52,7 +52,8 @@ CLIP_MODELS=(
 )
 
 UNET_MODELS=(
-    "https://huggingface.co/lllyasviel/flux1_dev/resolve/main/flux1-dev-fp8.safetensors"
+    #"https://huggingface.co/lllyasviel/flux1_dev/resolve/main/flux1-dev-fp8.safetensors"
+    "https://huggingface.co/black-forest-labs/FLUX.1-dev/resolve/main/flux1-dev.safetensors"
     "https://huggingface.co/Yogotatara/flux1-dev-Q8_0.gguf/resolve/main/flux1-dev-Q8_0.gguf"
 )
 
