@@ -2,6 +2,7 @@
 
 source /venv/main/bin/activate
 COMFYUI_DIR=${WORKSPACE}/ComfyUI
+VOLUME_PATH=/data
 
 # Packages are installed after nodes so we can fix them...
 
@@ -103,7 +104,7 @@ function provisioning_get_pip_packages() {
 function provisioning_get_nodes() {
     for repo in "${NODES[@]}"; do
         dir="${repo##*/}"
-        path="${COMFYUI_DIR}/custom_nodes/${dir}"
+        path="${VOLUME_PATH}/custom_nodes/${dir}"
         requirements="${path}/requirements.txt"
         if [[ -d $path ]]; then
             if [[ ${AUTO_UPDATE,,} != "false" ]]; then
@@ -198,8 +199,8 @@ if [[ ! -f /.noprovisioning ]]; then
     provisioning_start
 fi
 
-# Paths
-VOLUME_PATH=/data
+# Clear default Paths
+
 rm -rf $COMFYUI_DIR/models $COMFYUI_DIR/input $COMFYUI_DIR/output $COMFYUI_DIR/custom_nodes
 #WORKSPACE_PATH="/workspace/comfyui"
 
