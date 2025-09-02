@@ -17,7 +17,20 @@ PIP_PACKAGES=(
 
 NODES=(
     #"https://github.com/ltdrdata/ComfyUI-Manager"
-    #"https://github.com/cubiq/ComfyUI_essentials"
+    "https://github.com/cubiq/ComfyUI_essentials"
+    "https://github.com/cubiq/ComfyUI_IPAdapter_plus"
+    "https://github.com/city96/ComfyUI-GGUF"
+    "https://github.com/rgthree/rgthree-comfy"
+    "https://github.com/yolain/ComfyUI-Easy-Use"
+    "https://github.com/kijai/ComfyUI-KJNodes"
+    "https://github.com/kijai/ComfyUI-Florence2"
+    "https://github.com/crystian/ComfyUI-Crystools"
+    "https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite"
+    "https://github.com/kijai/ComfyUI-FluxTrainer"
+    "https://github.com/shiimizu/ComfyUI-TiledDiffusion"
+    "https://github.com/lquesada/ComfyUI-Inpaint-CropAndStitch"
+    "https://github.com/Acly/comfyui-inpaint-nodes"
+    "https://github.com/kijai/ComfyUI-WanVideoWrapper"
 )
 
 WORKFLOWS=(
@@ -208,3 +221,28 @@ printf "  %s -> %s\n" "$COMFYUI_DIR/models" "$VOLUME_PATH/models"
 printf "  %s -> %s\n" "$COMFYUI_DIR/custom_nodes" "$VOLUME_PATH/custom_nodes"
 printf "  %s -> %s\n" "$COMFYUI_DIR/input" "$VOLUME_PATH/input"
 printf "  %s -> %s\n" "$COMFYUI_DIR/output" "$VOLUME_PATH/ouput"
+
+#update Comfy-Core, Custom_nodes & Comfy-Manager
+
+#WORKSPACE_PATH="/workspace/comfyui"
+
+# Update ComfyUI core
+if [ -d "$COMFYUI_DIR/.git" ]; then
+    printf "Updating ComfyUI core...\n"
+    git -C "$COMFYUI_DIR" pull
+fi
+
+# Update ComfyUI-Manager
+if [ -d "$COMFYUI_DIR/custom_nodes/ComfyUI-Manager/.git" ]; then
+    printf "Updating ComfyUI-Manager...\n"
+    git -C "$COMFYUI_DIR/custom_nodes/ComfyUI-Manager" pull
+fi
+
+# Update all custom nodes
+printf "Updating all custom nodes...\n"
+for d in "$COMFYUI_DIR/custom_nodes"/*/; do
+    if [ -d "$d/.git" ]; then
+        printf "  -> Updating %s\n" "$(basename "$d")"
+        git -C "$d" pull || printf "  !! Failed to update %s\n" "$(basename "$d")"
+    fi
+done
