@@ -103,7 +103,7 @@ function provisioning_get_pip_packages() {
 function provisioning_get_nodes() {
     for repo in "${NODES[@]}"; do
         dir="${repo##*/}"
-        path="${COMFYUI_DIR}custom_nodes/${dir}"
+        path="${COMFYUI_DIR}/custom_nodes/${dir}"
         requirements="${path}/requirements.txt"
         if [[ -d $path ]]; then
             if [[ ${AUTO_UPDATE,,} != "false" ]]; then
@@ -233,14 +233,14 @@ if [ -d "$COMFYUI_DIR/.git" ]; then
 fi
 
 # Update ComfyUI-Manager
-if [ -d "$COMFYUI_DIR/custom_nodes/ComfyUI-Manager/.git" ]; then
+if [ -d "$VOLUME_PATH/custom_nodes/ComfyUI-Manager/.git" ]; then
     printf "Updating ComfyUI-Manager...\n"
-    git -C "$COMFYUI_DIR/custom_nodes/ComfyUI-Manager" pull
+    git -C "$VOLUME_PATH/custom_nodes/ComfyUI-Manager" pull
 fi
 
 # Update all custom nodes
 printf "Updating all custom nodes...\n"
-for d in "$COMFYUI_DIR/custom_nodes"/*/; do
+for d in "$VOLUME_PATH/custom_nodes"/*/; do
     if [ -d "$d/.git" ]; then
         printf "  -> Updating %s\n" "$(basename "$d")"
         git -C "$d" pull || printf "  !! Failed to update %s\n" "$(basename "$d")"
