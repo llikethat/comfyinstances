@@ -3,6 +3,30 @@
 source /venv/main/bin/activate
 COMFYUI_DIR=${WORKSPACE}/ComfyUI
 
+# Paths
+VOLUME_PATH="/data"
+#WORKSPACE_PATH="/workspace/comfyui"
+
+# Make sure workspace exists
+#mkdir -p "$WORKSPACE_PATH"
+
+# Link models, checkpoints, custom nodes to persistent volume
+#mkdir -p "$VOLUME_PATH/models" "$VOLUME_PATH/custom_nodes" "$VOLUME_PATH/checkpoints"
+
+# Creating symlinks
+ln -sfn "$VOLUME_PATH/models" "$COMFYUI_DIR/models"
+ln -sfn "$VOLUME_PATH/custom_nodes" "$COMFYUI_DIR/custom_nodes"
+ln -sfn "$VOLUME_PATH/input" "$COMFYUI_DIR/input"
+ln -sfn "$VOLUME_PATH/output" "$COMFYUI_DIR/output"
+
+# Logging
+printf "Symlinks created:\n"
+printf "  %s -> %s\n" "$WORKSPACE_PATH/models" "$VOLUME_PATH/models"
+printf "  %s -> %s\n" "$WORKSPACE_PATH/custom_nodes" "$VOLUME_PATH/custom_nodes"
+printf "  %s -> %s\n" "$WORKSPACE_PATH/input" "$VOLUME_PATH/input"
+printf "  %s -> %s\n" "$WORKSPACE_PATH/output" "$VOLUME_PATH/ouput"
+
+
 # Packages are installed after nodes so we can fix them...
 
 APT_PACKAGES=(
