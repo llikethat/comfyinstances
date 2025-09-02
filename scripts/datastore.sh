@@ -215,6 +215,7 @@ ln -sfn "$VOLUME_PATH/models" "$COMFYUI_DIR"
 ln -sfn "$VOLUME_PATH/custom_nodes" "$COMFYUI_DIR"
 ln -sfn "$VOLUME_PATH/input" "$COMFYUI_DIR"
 ln -sfn "$VOLUME_PATH/output" "$COMFYUI_DIR"
+ln -sfn "$VOLUME_PATH/workflows" "$COMFYUI_DIR/user/default"
 
 # Logging
 printf "Symlinks created:\n"
@@ -222,6 +223,7 @@ printf "  %s -> %s\n" "$COMFYUI_DIR/models" "$VOLUME_PATH/models"
 printf "  %s -> %s\n" "$COMFYUI_DIR/custom_nodes" "$VOLUME_PATH/custom_nodes"
 printf "  %s -> %s\n" "$COMFYUI_DIR/input" "$VOLUME_PATH/input"
 printf "  %s -> %s\n" "$COMFYUI_DIR/output" "$VOLUME_PATH/ouput"
+printf "  %s -> %s\n" "$COMFYUI_DIR/user/default" "$VOLUME_PATH/workflows"
 
 #update Comfy-Core, Custom_nodes & Comfy-Manager
 
