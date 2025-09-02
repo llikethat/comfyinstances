@@ -4,14 +4,14 @@ source /venv/main/bin/activate
 COMFYUI_DIR=${WORKSPACE}/ComfyUI
 
 # Paths
-VOLUME_PATH="/data"
+VOLUME_PATH=/data
 #WORKSPACE_PATH="/workspace/comfyui"
 
 # Make sure workspace exists
 #mkdir -p "$WORKSPACE_PATH"
 
 # Link models, checkpoints, custom nodes to persistent volume
-#mkdir -p "$VOLUME_PATH/models" "$VOLUME_PATH/custom_nodes" "$VOLUME_PATH/checkpoints"
+mkdir -p "$VOLUME_PATH/models" "$VOLUME_PATH/custom_nodes" "$VOLUME_PATH/input" "$VOLUME_PATH/output"
 
 # Creating symlinks
 ln -sfn "$VOLUME_PATH/models" "$COMFYUI_DIR/models"
