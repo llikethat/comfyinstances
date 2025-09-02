@@ -24,12 +24,12 @@ WORKFLOWS=(
 
 )
 
-CHECKPOINTS=(
+CHECKPOINT_MODELS=(
     #"https://huggingface.co/Comfy-Org/flux1-dev/resolve/main/flux1-dev-fp8.safetensors"
     #"https://huggingface.co/Comfy-Org/flux1-dev/resolve/main/flux1-dev.safetensors"
     #"https://huggingface.co/Comfy-Org/flux1-schnell/resolve/main/flux1-schnell.safetensors"
     #"https://huggingface.co/Comfy-Org/flux1-schnell/resolve/main/flux1-schnell-fp8.safetensors"
-    "https://huggingface.co/RunDiffusion/Juggernaut-XL/resolve/main/juggernautXL_version2.safetensors"
+    #"https://huggingface.co/RunDiffusion/Juggernaut-XL/resolve/main/juggernautXL_version2.safetensors"
 )
 
 UNET_MODELS=(
@@ -187,7 +187,7 @@ fi
 
 # Paths
 VOLUME_PATH=/data
-rm -rf $COMFYUI_DIR/models $COMFYUI_DIR/input $COMFYUI_DIR/output
+rm -rf $COMFYUI_DIR/models $COMFYUI_DIR/input $COMFYUI_DIR/output $COMFYUI_DIR/custom_nodes
 #WORKSPACE_PATH="/workspace/comfyui"
 
 # Make sure workspace exists
@@ -198,13 +198,13 @@ rm -rf $COMFYUI_DIR/models $COMFYUI_DIR/input $COMFYUI_DIR/output
 
 # Creating symlinks
 ln -sfn "$VOLUME_PATH/models" "$COMFYUI_DIR"
-#ln -sfn "$VOLUME_PATH/custom_nodes" "$COMFYUI_DIR"
+ln -sfn "$VOLUME_PATH/custom_nodes" "$COMFYUI_DIR"
 ln -sfn "$VOLUME_PATH/input" "$COMFYUI_DIR"
 ln -sfn "$VOLUME_PATH/output" "$COMFYUI_DIR"
 
 # Logging
 printf "Symlinks created:\n"
 printf "  %s -> %s\n" "$COMFYUI_DIR/models" "$VOLUME_PATH/models"
-#printf "  %s -> %s\n" "$COMFYUI_DIR/custom_nodes" "$VOLUME_PATH/custom_nodes"
+printf "  %s -> %s\n" "$COMFYUI_DIR/custom_nodes" "$VOLUME_PATH/custom_nodes"
 printf "  %s -> %s\n" "$COMFYUI_DIR/input" "$VOLUME_PATH/input"
 printf "  %s -> %s\n" "$COMFYUI_DIR/output" "$VOLUME_PATH/ouput"
