@@ -252,6 +252,6 @@ for d in "$VOLUME_PATH/custom_nodes"/*/; do
 done
 
 # Start AItoolkit
-printf "Starting AItoolkit..."
-cd /data/ai-toolkit/ui
-nohup /opt/nvm/versions/node/v22.17.0/bin/npm run build_and_start > /data/logs/aitoolkit.log 2>&1 &
+#printf "Starting AItoolkit..."
+#cd /data/ai-toolkit/ui
+#nohup /opt/nvm/versions/node/v22.17.0/bin/npm run build_and_start > /data/logs/aitoolkit.log 2>&1 &
