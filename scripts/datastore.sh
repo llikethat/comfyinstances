@@ -1,6 +1,7 @@
 #!/bin/bash
 
 source /venv/main/bin/activate
+/venv/main/bin/python -m pip install sageattention
 COMFYUI_DIR=${WORKSPACE}/ComfyUI
 VOLUME_PATH=/data
 
