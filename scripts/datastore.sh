@@ -249,3 +249,8 @@ for d in "$VOLUME_PATH/custom_nodes"/*/; do
         git -C "$d" pull || printf "  !! Failed to update %s\n" "$(basename "$d")"
     fi
 done
+
+# Start AItoolkit
+printf "Starting AItoolkit..."
+cd /data/ai-toolkit/ui
+nohup npm run build_start > /data/logs/aitoolkit.log 2>&1 &
