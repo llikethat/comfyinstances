@@ -254,4 +254,4 @@ done
 # Start AItoolkit
 printf "Starting AItoolkit..."
 cd /data/ai-toolkit/ui
-nohup npm run build_and_start > /data/logs/aitoolkit.log 2>&1 &
+nohup /opt/nvm/versions/node/v22.17.0/bin/npm run build_and_start > /data/logs/aitoolkit.log 2>&1 &
