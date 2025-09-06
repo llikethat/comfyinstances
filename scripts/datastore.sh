@@ -202,7 +202,7 @@ fi
 
 # Clear default Paths
 
-rm -rf $COMFYUI_DIR/models $COMFYUI_DIR/input $COMFYUI_DIR/output $COMFYUI_DIR/custom_nodes $COMFYUI_DIR/.hf_home
+rm -rf $COMFYUI_DIR/models $COMFYUI_DIR/input $COMFYUI_DIR/output $COMFYUI_DIR/custom_nodes $WORKSPACE/.hf_home
 #WORKSPACE_PATH="/workspace/comfyui"
 
 # Make sure workspace exists
@@ -217,7 +217,7 @@ ln -sfn "$VOLUME_PATH/custom_nodes" "$COMFYUI_DIR"
 ln -sfn "$VOLUME_PATH/input" "$COMFYUI_DIR"
 ln -sfn "$VOLUME_PATH/output" "$COMFYUI_DIR"
 ln -sfn "$VOLUME_PATH/workflows" "$COMFYUI_DIR/user/default"
-ln -sfn "$VOLUME_PATH/.cache" "$COMFYUI_DIR/.hf_home"
+ln -sfn "$VOLUME_PATH/.cache" "$WORKSPACE/.hf_home"
 
 # Logging
 printf "Symlinks created:\n"
@@ -226,7 +226,7 @@ printf "  %s -> %s\n" "$COMFYUI_DIR/custom_nodes" "$VOLUME_PATH/custom_nodes"
 printf "  %s -> %s\n" "$COMFYUI_DIR/input" "$VOLUME_PATH/input"
 printf "  %s -> %s\n" "$COMFYUI_DIR/output" "$VOLUME_PATH/ouput"
 printf "  %s -> %s\n" "$COMFYUI_DIR/user/default" "$VOLUME_PATH/workflows"
-printf "  %s -> %s\n" "$COMFYUI_DIR/.hf_home" "$VOLUME_PATH/.cache"
+printf "  %s -> %s\n" "$WORKSPACE/.hf_home" "$VOLUME_PATH/.cache"
 
 #update Comfy-Core, Custom_nodes & Comfy-Manager
 
