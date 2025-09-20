@@ -52,7 +52,7 @@ CHECKPOINT_MODELS=(
     #"https://huggingface.co/Comfy-Org/flux1-schnell/resolve/main/flux1-schnell.safetensors"
     #"https://huggingface.co/Comfy-Org/flux1-schnell/resolve/main/flux1-schnell-fp8.safetensors"
     #"https://huggingface.co/RunDiffusion/Juggernaut-XL/resolve/main/juggernautXL_version2.safetensors"
-    "https://civitai.com/api/download/models/357609"
+    #"https://civitai.com/api/download/models/357609"
     #"https://civitai.com/api/download/models/83490"
     
 )
@@ -61,11 +61,14 @@ UNET_MODELS=(
 )
 
 LORA_MODELS=(
-    "https://huggingface.co/black-forest-labs/FLUX.1-Canny-dev-lora/resolve/main/flux1-canny-dev-lora.safetensors"
+    #"https://huggingface.co/black-forest-labs/FLUX.1-Canny-dev-lora/resolve/main/flux1-canny-dev-lora.safetensors"
     #"https://huggingface.co/black-forest-labs/FLUX.1-Depth-dev-lora/resolve/main/flux1-depth-dev-lora.safetensors"
+    "https://huggingface.co/Kijai/WanVideo_comfy/resolve/main/Wan21_T2V_14B_lightx2v_cfg_step_distill_lora_rank32.safetensors"
 )
 
 VAE_MODELS=(
+    "https://huggingface.co/lovis93/testllm/resolve/ed9cf1af7465cebca4649157f118e331cf2a084f/ae.safetensors"
+    "https://huggingface.co/Kijai/WanVideo_comfy/resolve/main/Wan2_1_VAE_bf16.safetensors"
 )
 
 ESRGAN_MODELS=(
@@ -75,10 +78,21 @@ CONTROLNET_MODELS=(
 )
 
 CLIP_MODELS=(
-    #"https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/clip_l.safetensors"
+    "https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/clip_l.safetensors"
     #"https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/t5xxl_fp16.safetensors"
     #"https://huggingface.co/city96/t5-v1_1-xxl-encoder-gguf/resolve/main/t5-v1_1-xxl-encoder-Q8_0.gguf"
     #"https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/t5xxl_fp8_e4m3fn.safetensors"
+)
+
+DIFFUSION_MODELS=(
+    "https://huggingface.co/black-forest-labs/FLUX.1-Kontext-dev/resolve/main/flux1-kontext-dev.safetensors"
+    "https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/diffusion_models/wan2.1_t2v_14B_fp8_e4m3fn.safetensors"
+    "https://huggingface.co/Kijai/WanVideo_comfy/resolve/main/Wan2_1-VACE_module_14B_fp8_e4m3fn.safetensors"
+)
+
+TEXT_ENCODERS=(
+    "https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/t5xxl_fp8_e4m3fn.safetensors"
+    "https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/text_encoders/umt5_xxl_fp8_e4m3fn_scaled.safetensors"
 )
 
 # Clear default Paths
@@ -107,8 +121,8 @@ printf "  %s -> %s\n" "$WORKSPACE/.hf_home" "$VOLUME_PATH/.cache/.hf_home"
 # Bash 4.x+ required for associative arrays!
 declare -A CUSTOM_MODEL_FILENAMES=(
   # ["URL"]="desired_filename"
-  ["https://civitai.com/api/download/models/357609"]="juggernautXL_v9Rdphoto2Lightning.safetensors"
-  ["https://civitai.com/api/download/models/83490"]="vendo_photorealistic.safetensors"
+  #["https://civitai.com/api/download/models/357609"]="juggernautXL_v9Rdphoto2Lightning.safetensors"
+  #["https://civitai.com/api/download/models/83490"]="vendo_photorealistic.safetensors"
   # Add more entries as needed
 )
 
@@ -140,6 +154,12 @@ function provisioning_start() {
     provisioning_get_files \
         "${COMFYUI_DIR}/models/clip" \
         "${CLIP_MODELS[@]}"
+    provisioning_get_files \
+        "${COMFYUI_DIR}/models/text_encoders" \
+        "${TEXT_ENCODERS[@]}"
+    provisioning_get_files \
+        "${COMFYUI_DIR}/models/diffusion_models" \
+        "${DIFFUSION_MODELS[@]}"
     provisioning_print_end
 }
 
