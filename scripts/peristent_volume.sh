@@ -4,7 +4,6 @@ source /venv/main/bin/activate
 #/venv/main/bin/python -m pip install sageattention
 COMFYUI_DIR=${WORKSPACE}/ComfyUI
 VOLUME_PATH=/data
-mkdir -p "$VOLUME_PATH/custom_nodes" "$VOLUME_PATH/input" "$VOLUME_PATH/output" "$VOLUME_PATH/.cache/.hf_home" "$VOLUME_PATH/workflows"
 HF_TOKEN="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"
 HUGGINGFACE_HUB_TOKEN="$HF_TOKEN"   # some libraries check this name
 HF_HOME="$VOLUME_PATH/.cache/.hf_home"
@@ -73,6 +72,30 @@ ESRGAN_MODELS=(
 
 CONTROLNET_MODELS=(
 )
+
+# Clear default Paths
+
+cp -r "$COMFYUI_DIR/models" "$VOLUME_PATH/models" 
+rm -rf $COMFYUI_DIR/models $COMFYUI_DIR/input $COMFYUI_DIR/output $COMFYUI_DIR/custom_nodes $WORKSPACE/.hf_home 
+
+# Link models, checkpoints, custom nodes to persistent volume
+# Creating symlinks
+ln -sfn "$VOLUME_PATH/models" "$COMFYUI_DIR"
+ln -sfn "$VOLUME_PATH/custom_nodes" "$COMFYUI_DIR"
+ln -sfn "$VOLUME_PATH/input" "$COMFYUI_DIR"
+ln -sfn "$VOLUME_PATH/output" "$COMFYUI_DIR"
+ln -sfn "$VOLUME_PATH/workflows" "$COMFYUI_DIR/user/default"
+ln -sfn "$VOLUME_PATH/.cache/.hf_home" "${WORKSPACE}/"
+
+# Logging
+printf "Symlinks created:\n"
+printf "  %s -> %s\n" "$COMFYUI_DIR/models" "$VOLUME_PATH/models"
+printf "  %s -> %s\n" "$COMFYUI_DIR/custom_nodes" "$VOLUME_PATH/custom_nodes"
+printf "  %s -> %s\n" "$COMFYUI_DIR/input" "$VOLUME_PATH/input"
+printf "  %s -> %s\n" "$COMFYUI_DIR/output" "$VOLUME_PATH/output"
+printf "  %s -> %s\n" "$COMFYUI_DIR/user/default" "$VOLUME_PATH/workflows"
+printf "  %s -> %s\n" "$WORKSPACE/.hf_home" "$VOLUME_PATH/.cache/.hf_home"
+
 
 ### DO NOT EDIT BELOW HERE UNLESS YOU KNOW WHAT YOU ARE DOING ###
 
@@ -211,29 +234,6 @@ function provisioning_download() {
 if [[ ! -f /.noprovisioning ]]; then
     provisioning_start
 fi
-
-# Clear default Paths
-
-cp -r "$COMFYUI_DIR/models" "$VOLUME_PATH/models" 
-rm -rf $COMFYUI_DIR/models $COMFYUI_DIR/input $COMFYUI_DIR/output $COMFYUI_DIR/custom_nodes $WORKSPACE/.hf_home 
-
-# Link models, checkpoints, custom nodes to persistent volume
-# Creating symlinks
-ln -sfn "$VOLUME_PATH/models" "$COMFYUI_DIR"
-ln -sfn "$VOLUME_PATH/custom_nodes" "$COMFYUI_DIR"
-ln -sfn "$VOLUME_PATH/input" "$COMFYUI_DIR"
-ln -sfn "$VOLUME_PATH/output" "$COMFYUI_DIR"
-ln -sfn "$VOLUME_PATH/workflows" "$COMFYUI_DIR/user/default"
-ln -sfn "$VOLUME_PATH/.cache/.hf_home" "${WORKSPACE}/"
-
-# Logging
-printf "Symlinks created:\n"
-printf "  %s -> %s\n" "$COMFYUI_DIR/models" "$VOLUME_PATH/models"
-printf "  %s -> %s\n" "$COMFYUI_DIR/custom_nodes" "$VOLUME_PATH/custom_nodes"
-printf "  %s -> %s\n" "$COMFYUI_DIR/input" "$VOLUME_PATH/input"
-printf "  %s -> %s\n" "$COMFYUI_DIR/output" "$VOLUME_PATH/output"
-printf "  %s -> %s\n" "$COMFYUI_DIR/user/default" "$VOLUME_PATH/workflows"
-printf "  %s -> %s\n" "$WORKSPACE/.hf_home" "$VOLUME_PATH/.cache/.hf_home"
 
 #update Comfy-Core, Custom_nodes & Comfy-Manager
 
