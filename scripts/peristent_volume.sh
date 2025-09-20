@@ -4,10 +4,8 @@ source /venv/main/bin/activate
 #/venv/main/bin/python -m pip install sageattention
 COMFYUI_DIR=${WORKSPACE}/ComfyUI
 VOLUME_PATH=/data
-HF_TOKEN="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"
 HUGGINGFACE_HUB_TOKEN="$HF_TOKEN"   # some libraries check this name
 HF_HOME="$VOLUME_PATH/.cache/.hf_home"
-CIVITAI_TOKEN="f6fa17142cfe35d95a40ae1a61d4ff92"
 
 #Create directories to be linked in the persistent storage - this has to be done only for the 1st time
 
