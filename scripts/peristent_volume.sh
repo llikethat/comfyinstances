@@ -214,7 +214,7 @@ fi
 
 # Clear default Paths
 
-cp "$COMFYUI_DIR/models" "$VOLUME_PATH/models" 
+cp -r "$COMFYUI_DIR/models" "$VOLUME_PATH/models" 
 rm -rf $COMFYUI_DIR/models $COMFYUI_DIR/input $COMFYUI_DIR/output $COMFYUI_DIR/custom_nodes $WORKSPACE/.hf_home 
 
 # Link models, checkpoints, custom nodes to persistent volume
@@ -231,7 +231,7 @@ printf "Symlinks created:\n"
 printf "  %s -> %s\n" "$COMFYUI_DIR/models" "$VOLUME_PATH/models"
 printf "  %s -> %s\n" "$COMFYUI_DIR/custom_nodes" "$VOLUME_PATH/custom_nodes"
 printf "  %s -> %s\n" "$COMFYUI_DIR/input" "$VOLUME_PATH/input"
-printf "  %s -> %s\n" "$COMFYUI_DIR/output" "$VOLUME_PATH/ouput"
+printf "  %s -> %s\n" "$COMFYUI_DIR/output" "$VOLUME_PATH/output"
 printf "  %s -> %s\n" "$COMFYUI_DIR/user/default" "$VOLUME_PATH/workflows"
 printf "  %s -> %s\n" "$WORKSPACE/.hf_home" "$VOLUME_PATH/.cache/.hf_home"
 
