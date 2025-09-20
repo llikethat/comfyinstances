@@ -222,8 +222,10 @@ function provisioning_download() {
         auth_token="$CIVITAI_TOKEN"
     fi
     if [[ -n $auth_token ]];then
+        echo "wget --header=\"Authorization: Bearer $auth_token\" -nc --content-disposition --show-progress -e dotbytes=\"${3:-4M}\" -P \"$2\" \"$1\""
         wget --header="Authorization: Bearer $auth_token" -nc --content-disposition --show-progress -e dotbytes="${3:-4M}" -P "$2" "$1"
     else
+        echo "wget -nc --content-disposition --show-progress -e dotbytes=\"${3:-4M}\" -P \"$2\" \"$1\""
         wget -nc --content-disposition --show-progress -e dotbytes="${3:-4M}" -P "$2" "$1"
     fi
 }
