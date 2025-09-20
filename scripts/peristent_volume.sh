@@ -243,7 +243,7 @@ function provisioning_download() {
         wget -nc --show-progress -e dotbytes="${3:-4M}" -O "$out_file" "$url"
     elif [[ -n $HF_TOKEN && $url =~ ^https://([a-zA-Z0-9_-]+\.)?huggingface\.co(/|$|\?) ]]; then
         # Hugging Face: use token, write to directory, use server-provided filename
-        echo "wget --header="Authorization: Bearer $HF_TOKEN\" -nc --content-disposition --show-progress -e dotbytes=\"${3:-4M}\" -P \"$dest_dir\" \"$url\""
+        echo "wget --header=\"Authorization: Bearer $HF_TOKEN\" -nc --content-disposition --show-progress -e dotbytes=\"${3:-4M}\" -P \"$dest_dir\" \"$url\""
         wget --header="Authorization: Bearer $HF_TOKEN" -nc --content-disposition --show-progress -e dotbytes="${3:-4M}" -P "$dest_dir" "$url"
     else
         # All other URLs: default behavior, use server-provided filename
