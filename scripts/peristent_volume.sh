@@ -52,6 +52,7 @@ CHECKPOINT_MODELS=(
     #"https://huggingface.co/Comfy-Org/flux1-schnell/resolve/main/flux1-schnell.safetensors"
     #"https://huggingface.co/Comfy-Org/flux1-schnell/resolve/main/flux1-schnell-fp8.safetensors"
     #"https://huggingface.co/RunDiffusion/Juggernaut-XL/resolve/main/juggernautXL_version2.safetensors"
+    "https://civitai.com/api/download/models/357609"
     
 )
 
