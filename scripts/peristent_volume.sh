@@ -4,6 +4,16 @@ source /venv/main/bin/activate
 #/venv/main/bin/python -m pip install sageattention
 COMFYUI_DIR=${WORKSPACE}/ComfyUI
 VOLUME_PATH=/data
+mkdir -p "$VOLUME_PATH/models" "$VOLUME_PATH/custom_nodes" "$VOLUME_PATH/input" "$VOLUME_PATH/output" "$VOLUME_PATH/.cache/.hf_home" "$VOLUME_PATH/workflows"
+HF_TOKEN="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"
+HUGGINGFACE_HUB_TOKEN="$HF_TOKEN"   # some libraries check this name
+HF_HOME="$VOLUME_PATH/.cache/.hf_home"
+CIVITAI_TOKEN="f6fa17142cfe35d95a40ae1a61d4ff92"
+
+#Create directories to be linked in the persistent storage - this has to be done only for the 1st time
+
+mkdir -p "$VOLUME_PATH/models" "$VOLUME_PATH/custom_nodes" "$VOLUME_PATH/input" "$VOLUME_PATH/output" "$VOLUME_PATH/.cache/.hf_home" "$VOLUME_PATH/workflows"
+
 
 # Packages are installed after nodes so we can fix them...
 
@@ -40,11 +50,13 @@ WORKFLOWS=(
 )
 
 CHECKPOINT_MODELS=(
-    #"https://huggingface.co/Comfy-Org/flux1-dev/resolve/main/flux1-dev-fp8.safetensors"
+    "https://huggingface.co/Comfy-Org/flux1-dev/resolve/main/flux1-dev-fp8.safetensors"
     #"https://huggingface.co/Comfy-Org/flux1-dev/resolve/main/flux1-dev.safetensors"
     #"https://huggingface.co/Comfy-Org/flux1-schnell/resolve/main/flux1-schnell.safetensors"
     #"https://huggingface.co/Comfy-Org/flux1-schnell/resolve/main/flux1-schnell-fp8.safetensors"
     #"https://huggingface.co/RunDiffusion/Juggernaut-XL/resolve/main/juggernautXL_version2.safetensors"
+    "https://civitai.com/api/download/models/357609"
+    
 )
 
 UNET_MODELS=(
@@ -205,8 +217,6 @@ fi
 rm -rf $COMFYUI_DIR/models $COMFYUI_DIR/input $COMFYUI_DIR/output $COMFYUI_DIR/custom_nodes $WORKSPACE/.hf_home 
 
 # Link models, checkpoints, custom nodes to persistent volume
-mkdir -p "$VOLUME_PATH/models" "$VOLUME_PATH/custom_nodes" "$VOLUME_PATH/input" "$VOLUME_PATH/output" "$VOLUME_PATH/.cache/.hf_home" "$VOLUME_PATH/workflows"
-
 # Creating symlinks
 ln -sfn "$VOLUME_PATH/models" "$COMFYUI_DIR"
 ln -sfn "$VOLUME_PATH/custom_nodes" "$COMFYUI_DIR"
