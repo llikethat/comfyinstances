@@ -53,6 +53,7 @@ CHECKPOINT_MODELS=(
     #"https://huggingface.co/Comfy-Org/flux1-schnell/resolve/main/flux1-schnell-fp8.safetensors"
     #"https://huggingface.co/RunDiffusion/Juggernaut-XL/resolve/main/juggernautXL_version2.safetensors"
     "https://civitai.com/api/download/models/357609"
+    "https://civitai.com/api/download/models/83490"
     
 )
 
@@ -98,6 +99,7 @@ printf "  %s -> %s\n" "$WORKSPACE/.hf_home" "$VOLUME_PATH/.cache/.hf_home"
 declare -A CUSTOM_MODEL_FILENAMES=(
   # ["URL"]="desired_filename"
   ["https://civitai.com/api/download/models/357609"]="juggernautXL_v9Rdphoto2Lightning.safetensors"
+  ["https://civitai.com/api/download/models/83490"]="vendo_photorealistic.safetensors"
   # Add more entries as needed
 )
 
@@ -221,35 +223,22 @@ function provisioning_has_valid_civitai_token() {
 
 # Download from $1 URL to $2 file path
 function provisioning_download() {
-    #if [[ -n $HF_TOKEN && $1 =~ ^https://([a-zA-Z0-9_-]+\.)?huggingface\.co(/|$|\?) ]]; then
-    #    auth_token="$HF_TOKEN"
-    #elif 
-    #    [[ -n $CIVITAI_TOKEN && $1 =~ ^https://([a-zA-Z0-9_-]+\.)?civitai\.com(/|$|\?) ]]; then
-    #    auth_token="$CIVITAI_TOKEN"
-    #fi
-    #if [[ -n $auth_token ]];then
-    #    echo "wget --header=\"Authorization: Bearer $auth_token\" -nc --content-disposition --show-progress -e dotbytes=\"${3:-4M}\" -P \"$2\" \"$1\""
-    #    wget --header="Authorization: Bearer $auth_token" -nc --content-disposition --show-progress -e dotbytes="${3:-4M}" -P "$2" "$1"
-    #else
-    #    echo "wget -nc --content-disposition --show-progress -e dotbytes=\"${3:-4M}\" -P \"$2\" \"$1\""
-    #    wget -nc --content-disposition --show-progress -e dotbytes="${3:-4M}" -P "$2" "$1"
-    #fi
 
     url="$1"
     dest_dir="$2"
     # Check if a custom filename is set for this URL
     if [[ -n "${CUSTOM_MODEL_FILENAMES[$url]}" ]]; then
         out_file="$dest_dir/${CUSTOM_MODEL_FILENAMES[$url]}"
-        echo "wget -nc --show-progress -e dotbytes=\"${3:-4M}\" -O \"$out_file\" \"$url\""
-        wget -nc --show-progress -e dotbytes="${3:-4M}" -O "$out_file" "$url"
+        #echo "wget -nc --show-progress -e dotbytes=\"${3:-4M}\" -O \"$out_file\" \"$url\""
+        wget -qnc --show-progress -e dotbytes="${3:-4M}" -O "$out_file" "$url"
     elif [[ -n $HF_TOKEN && $url =~ ^https://([a-zA-Z0-9_-]+\.)?huggingface\.co(/|$|\?) ]]; then
         # Hugging Face: use token, write to directory, use server-provided filename
-        echo "wget --header=\"Authorization: Bearer $HF_TOKEN\" -nc --content-disposition --show-progress -e dotbytes=\"${3:-4M}\" -P \"$dest_dir\" \"$url\""
-        wget --header="Authorization: Bearer $HF_TOKEN" -nc --content-disposition --show-progress -e dotbytes="${3:-4M}" -P "$dest_dir" "$url"
+        #echo "wget --header=\"Authorization: Bearer $HF_TOKEN\" -nc --content-disposition --show-progress -e dotbytes=\"${3:-4M}\" -P \"$dest_dir\" \"$url\""
+        wget --header="Authorization: Bearer $HF_TOKEN" -qnc --content-disposition --show-progress -e dotbytes="${3:-4M}" -P "$dest_dir" "$url"
     else
         # All other URLs: default behavior, use server-provided filename
-        echo "wget -nc --content-disposition --show-progress -e dotbytes=\"${3:-4M}\" -P \"$dest_dir\" \"$url\""
-        wget -nc --content-disposition --show-progress -e dotbytes="${3:-4M}" -P "$dest_dir" "$url"
+        #echo "wget -nc --content-disposition --show-progress -e dotbytes=\"${3:-4M}\" -P \"$dest_dir\" \"$url\""
+        wget -qnc --content-disposition --show-progress -e dotbytes="${3:-4M}" -P "$dest_dir" "$url"
     fi
 }
 
