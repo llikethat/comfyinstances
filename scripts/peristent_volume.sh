@@ -47,13 +47,13 @@ WORKFLOWS=(
 )
 
 CHECKPOINT_MODELS=(
-    "https://huggingface.co/Comfy-Org/flux1-dev/resolve/main/flux1-dev-fp8.safetensors"
+    #"https://huggingface.co/Comfy-Org/flux1-dev/resolve/main/flux1-dev-fp8.safetensors"
     #"https://huggingface.co/Comfy-Org/flux1-dev/resolve/main/flux1-dev.safetensors"
     #"https://huggingface.co/Comfy-Org/flux1-schnell/resolve/main/flux1-schnell.safetensors"
     #"https://huggingface.co/Comfy-Org/flux1-schnell/resolve/main/flux1-schnell-fp8.safetensors"
     #"https://huggingface.co/RunDiffusion/Juggernaut-XL/resolve/main/juggernautXL_version2.safetensors"
     "https://civitai.com/api/download/models/357609"
-    "https://civitai.com/api/download/models/83490"
+    #"https://civitai.com/api/download/models/83490"
     
 )
 
@@ -61,6 +61,8 @@ UNET_MODELS=(
 )
 
 LORA_MODELS=(
+    "https://huggingface.co/black-forest-labs/FLUX.1-Canny-dev-lora/resolve/main/flux1-canny-dev-lora.safetensors"
+    #"https://huggingface.co/black-forest-labs/FLUX.1-Depth-dev-lora/resolve/main/flux1-depth-dev-lora.safetensors"
 )
 
 VAE_MODELS=(
@@ -70,6 +72,13 @@ ESRGAN_MODELS=(
 )
 
 CONTROLNET_MODELS=(
+)
+
+CLIP_MODELS=(
+    #"https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/clip_l.safetensors"
+    #"https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/t5xxl_fp16.safetensors"
+    #"https://huggingface.co/city96/t5-v1_1-xxl-encoder-gguf/resolve/main/t5-v1_1-xxl-encoder-Q8_0.gguf"
+    #"https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/t5xxl_fp8_e4m3fn.safetensors"
 )
 
 # Clear default Paths
@@ -128,6 +137,9 @@ function provisioning_start() {
     provisioning_get_files \
         "${COMFYUI_DIR}/models/esrgan" \
         "${ESRGAN_MODELS[@]}"
+    provisioning_get_files \
+        "${COMFYUI_DIR}/models/clip" \
+        "${CLIP_MODELS[@]}"
     provisioning_print_end
 }
 
