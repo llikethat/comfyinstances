@@ -18,7 +18,7 @@ PIP_PACKAGES=(
 )
 
 NODES=(
-    #"https://github.com/ltdrdata/ComfyUI-Manager"
+    "https://github.com/ltdrdata/ComfyUI-Manager"
     "https://github.com/cubiq/ComfyUI_essentials"
     "https://github.com/cubiq/ComfyUI_IPAdapter_plus"
     "https://github.com/city96/ComfyUI-GGUF"
@@ -202,7 +202,7 @@ fi
 
 # Clear default Paths
 
-rm -rf $COMFYUI_DIR/models $COMFYUI_DIR/input $COMFYUI_DIR/output $COMFYUI_DIR/custom_nodes $WORKSPACE/.hf_home
+rm -rf $COMFYUI_DIR/models $COMFYUI_DIR/input $COMFYUI_DIR/output $COMFYUI_DIR/custom_nodes $WORKSPACE/.hf_home 
 
 # Link models, checkpoints, custom nodes to persistent volume
 mkdir -p "$VOLUME_PATH/models" "$VOLUME_PATH/custom_nodes" "$VOLUME_PATH/input" "$VOLUME_PATH/output" "$VOLUME_PATH/.cache/.hf_home" "$VOLUME_PATH/workflows"
