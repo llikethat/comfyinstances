@@ -205,7 +205,7 @@ fi
 rm -rf $COMFYUI_DIR/models $COMFYUI_DIR/input $COMFYUI_DIR/output $COMFYUI_DIR/custom_nodes $WORKSPACE/.hf_home
 
 # Link models, checkpoints, custom nodes to persistent volume
-mkdir -p "$VOLUME_PATH/models" "$VOLUME_PATH/custom_nodes" "$VOLUME_PATH/input" "$VOLUME_PATH/output" "$VOLUME_PATH/.cache/.hf_home"
+mkdir -p "$VOLUME_PATH/models" "$VOLUME_PATH/custom_nodes" "$VOLUME_PATH/input" "$VOLUME_PATH/output" "$VOLUME_PATH/.cache/.hf_home" "$VOLUME_PATH/workflows"
 
 # Creating symlinks
 ln -sfn "$VOLUME_PATH/models" "$COMFYUI_DIR"
