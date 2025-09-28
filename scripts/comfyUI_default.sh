@@ -176,6 +176,9 @@ function provisioning_download() {
     fi
 }
 
+bash /workspace/ComfyUI/update_comfyui.sh
+
+
 # Allow user to disable provisioning if they started with a script they didn't want
 if [[ ! -f /.noprovisioning ]]; then
     provisioning_start
