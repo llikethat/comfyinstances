@@ -176,8 +176,7 @@ function provisioning_download() {
     fi
 }
 
-bash /workspace/ComfyUI/update_comfyui.sh
-
+bash <(curl -fsSL "https://raw.githubusercontent.com/llikethat/comfyinstances/refs/heads/main/scripts/update_comfyui.sh") | tee /workspace/ComfyUIupdate.log
 
 # Allow user to disable provisioning if they started with a script they didn't want
 if [[ ! -f /.noprovisioning ]]; then
