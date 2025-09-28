@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# THIS SCRIPT IS USED FOR USING COMFYUI FROM AN ALREADY CREATED PERSISTENT VOLUME
+# USE THIS IF YOU ALREADY HAVE PERSISTENT STORAGE
+
+
 source /venv/main/bin/activate
 /venv/main/bin/python -m pip install sageattention
 COMFYUI_DIR=${WORKSPACE}/ComfyUI
